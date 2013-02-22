@@ -3,6 +3,7 @@
 
 import sys
 import pprint
+import re
 
 
 alterations = {
@@ -55,7 +56,8 @@ def root_to_surface(root):
 def inflect(root, sinfix):
     inflected = ""
 
-    for i in range(len(root)):
+    #print root
+    for i in range(7): #7 = CCCVCCC
         inflected += getsurface(root[i], sinfix[i])
 
     #print inflected
@@ -85,21 +87,20 @@ def getsurface(char, n):
 ##############
 #Main
 
-#args are
-#word = sys.argv[1].decode("utf-8")
-word = sys.argv[1]
+    #split root word into list of consonants (some with ') and vowels
+word = re.findall("k'|q'|k|g|q|G|x|ɣ|χ|ʁ|ɴ|ʀ|a|i|o" , sys.argv[1])
 root_to_surface(word)
 
-#usage
-#./inflect.py qqqaqqq
-#
-#returns:
-#
-#noun
-#    tçqaqt
-#verb
-#    çqaçqt
-#root
-#    qqqaqqq
 
+
+#usage
+
+#./inflect.py qk\'qaqqʁ
+
+#noun
+#    tʃ'qaqz
+#verb
+#    çqaçqz
+#root
+#    qk'qaqqʁ
 
