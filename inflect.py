@@ -22,9 +22,65 @@ alterations = {
     }
 
 sinfixes = {
-    "root" : [3, 3, 3, 0, 3, 3, 3],
-    "noun" : [1, 2, 3, 0, 4, 3, 1],
-    "verb" : [2, 4, 3, 0, 2, 3, 1]
+    "1noun.def.sg.nom" : [4,3,2,0,2,1,4],
+    "1noun.def.sg.acc" : [4,3,1,0,2,1,4],
+    "1noun.def.sg.dat" : [4,3,2,0,3,1,4],
+
+    "2noun.indef.sg.nom" : [4,3,2,0,2,2,4],
+    "2noun.demon.sg.nom" : [4,2,2,0,2,1,4],
+    "2noun.def.dual.nom" : [4,3,3,0,3,3,4],
+    "2noun.demon.dual.nom" : [4,2,3,0,3,3,4],
+    "2noun.def.pl.nom" : [4,3,3,0,2,3,4],
+    "2noun.indef.pl.nom" : [4,3,2,0,2,2,4],
+    "2noun.demon.pl.nom" : [4,2,3,0,2,3,4],
+
+    "2noun.indef.sg.acc" : [4,3,1,0,1,2,4],
+    "2noun.demon.sg.acc" : [4,2,1,0,2,1,4],
+    "2noun.def.dual.acc" : [4,3,2,0,3,3,4],
+    "2noun.demon.dual.acc" : [4,2,2,0,3,3,4],
+    "2noun.def.pl.acc" : [4,3,2,0,2,3,4],
+    "2noun.indef.pl.acc" : [4,3,1,0,1,2,4],
+    "2noun.demon.pl.acc" : [4,2,2,0,2,3,4],
+
+    "2noun.indef.sg.dat" : [4,3,1,0,3,2,4],
+    "2noun.demon.sg.dat" : [4,3,3,0,3,1,4],
+    "2noun.def.dual.dat" : [4,3,1,0,2,3,3],
+    "2noun.demon.dual.dat" : [4,2,1,0,3,3,4],
+    "2noun.def.pl.dat" : [4,3,2,0,2,3,3],
+    "2noun.indef.pl.dat" : [4,3,2,0,3,2,4],
+    "2noun.demon.pl.dat" : [4,2,1,0,2,3,4],
+
+
+    "1verb.perf.indic.1" : [1,4,4,0,1,2,2],
+    "1verb.perf.indic.2" : [2,4,4,0,2,1,2],
+    "1verb.perf.indic.3" : [1,4,4,0,2,2,1],
+
+    "2verb.perf.cond.1" : [1,4,4,0,1,2,3],
+    "2verb.perf.subj.1" : [1,4,4,0,1,3,2],
+    "2verb.perf.imper.1" : [1,4,4,0,1,3,3],
+    "2verb.imperf.indic.1" : [3,4,4,0,2,2,3],
+    "2verb.imperf.cond.1" : [3,4,4,0,1,3,2],
+    "2verb.imperf.subj.1" : [3,4,4,0,2,3,1],
+    "2verb.imperf.imper.1" : [3,4,4,0,3,3,3],
+
+    "2verb.perf.cond.2" : [2,4,4,0,2,1,3],
+    "2verb.perf.subj.2" : [2,4,4,0,2,1,1],
+    "2verb.perf.imper.2" : [2,4,4,0,2,3,1],
+    "2verb.imperf.indic.2" : [2,4,4,0,1,2,3],
+    "2verb.imperf.cond.2" : [2,4,4,0,1,2,2],
+    "2verb.imperf.subj.2" : [2,4,4,0,3,1,2],
+    "2verb.imperf.imper.2" : [2,4,4,0,3,3,2],
+
+    "2verb.perf.cond.3" : [1,4,4,0,2,1,3],
+    "2verb.perf.subj.3" : [1,4,4,0,2,1,1],
+    "2verb.perf.imper.3" : [1,4,4,0,2,3,1],
+    "2verb.imperf.indic.3" : [3,4,4,0,2,1,3],
+    "2verb.imperf.cond.3" : [3,4,4,0,1,1,2],
+    "2verb.imperf.subj.3" : [3,4,4,0,2,3,2],
+    "2verb.imperf.imper.3" : [3,4,4,0,3,3,3],
+
+
+    "1adj" : [3,4,1,0,4,2,3]
     }
 
 
@@ -43,7 +99,7 @@ def surface_to_root(surface):
 def root_to_surface(root):
     surface_forms = {}
 
-    for sinfix_name in sinfixes:
+    for sinfix_name in reversed(sorted(sinfixes)):
         print sinfix_name
         print "    " + inflect(root, sinfixes[sinfix_name])
         #surface_forms[sinfix_name] = inflect(root, sinfixes[sinfix_name])
@@ -88,7 +144,7 @@ def getsurface(char, n):
 #Main
 
     #split root word into list of consonants (some with ') and vowels
-word = re.findall("k'|q'|k|g|q|G|x|ɣ|χ|ʁ|ɴ|ʀ|a|i|o" , sys.argv[1])
+word = re.findall("k'|q'|k|g|q|G|x|ɣ|χ|ʁ|ɴ|ʀ|a|i|u" , sys.argv[1])
 root_to_surface(word)
 
 
